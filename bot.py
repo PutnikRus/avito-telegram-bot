@@ -44,7 +44,7 @@ async def poll_avito_messages():
             )
             await bot.send_message(
                 TELEGRAM_CHAT_ID,
-                text=f"<b>Новое сообщение от:</b> {msg['sender']}
+                text=f"<b>Новое сообщение от:</b> {msg['sender']}"
 
 {msg['text']}",
                 reply_markup=keyboard.as_markup()
