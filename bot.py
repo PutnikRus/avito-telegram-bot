@@ -99,6 +99,6 @@ async def cancel_reply(callback: CallbackQuery):
     await callback.answer()
 
 # Точка входа
-if _name_ == "_main_":
+if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
     dp.run_polling(bot)
