@@ -1,21 +1,26 @@
 import asyncio
-from aiogram import Bot, Dispatcher, types
-from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 import os
+from aiogram import Bot, Dispatcher, F
+from aiogram.types import Message
+from aiogram.enums import ParseMode
+from aiogram.filters import CommandStart
+from aiogram.client.default import DefaultBotProperties
+from dotenv import load_dotenv
 
-bot = Bot(token=os.getenv("TELEGRAM_TOKEN"))
-dp = Dispatcher(bot)
+load_dotenv()
 
-@dp.message_handler(commands=["start"])
-async def start(message: types.Message):
-    await message.answer("Бот работает!")
+bot = Bot(
+    token=os.getenv("TELEGRAM_TOKEN"),
+    default=DefaultBotProperties(parse_mode=ParseMode.HTML),
+)
+dp = Dispatcher()
 
-# Заглушка под реальный функционал
+@dp.message(CommandStart())
+async def start(message: Message):
+    await message.answer("Бот работает ✅")
+
 async def main():
-    from aiogram import executor
-    from dotenv import load_dotenv
-    load_dotenv()
-    await dp.start_polling()
+    await dp.start_polling(bot)
 
-if __name__ == "__main__":
+if _name_ == "_main_":
     asyncio.run(main())
