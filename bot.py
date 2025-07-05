@@ -50,7 +50,10 @@ async def check_new_messages():
             ])
             await bot.send_message(
                 chat_id=int(os.getenv("TELEGRAM_CHAT_ID")),
-                text=f"<b>Новое сообщение от:</b> {msg['sender']}
+               text=(
+    f"<b>Новое сообщение от:</b> {msg['sender']}\n\n"
+    f"{msg['text']}"
+),
 
 {msg['text']}",
                 reply_markup=keyboard
