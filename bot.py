@@ -42,11 +42,12 @@ async def poll_avito_messages():
                 text="✏️ Ответить",
                 callback_data=f"reply_{msg['id']}"
             )
-            await bot.send_message(
-                TELEGRAM_CHAT_ID,
-                text=f"<b>Новое сообщение от:</b> {msg['sender']}"
-
-{msg['text']}",
+           await bot.send_message(
+    chat_id=ADMIN_CHAT_ID,
+    text=f"""<b>Новое сообщение от:</b> {msg['sender']}
+{msg['text']}""",
+    parse_mode='HTML'
+)
                 reply_markup=keyboard.as_markup()
             )
         await asyncio.sleep(30)
