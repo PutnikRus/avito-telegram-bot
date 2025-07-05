@@ -37,7 +37,7 @@ async def handle_message(msg: Message):
         )
     )
 
-if _name_ == "_main_":  # ✅ Была ошибка name -> _name_
+if __name__ == "__main__":  # ✅ Была ошибка name -> _name_
     logging.basicConfig(level=logging.INFO)
     import asyncio
     asyncio.run(dp.start_polling(bot))
