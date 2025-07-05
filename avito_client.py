@@ -4,11 +4,12 @@ from dotenv import load_dotenv
 load_dotenv()
 
 class AvitoClient:
-    def __init__(self):
+    def _init_(self):  # ✅ двойное подчёркивание
         self.login = os.getenv("AVITO_LOGIN")
         self.password = os.getenv("AVITO_PASSWORD")
 
     def get_new_messages(self):
+        # Заглушка — просто тестовое сообщение
         return [{
             "chat_id": "123456",
             "sender": "Покупатель Иван",
